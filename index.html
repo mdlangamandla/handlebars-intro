@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reg_Num.css">
+    <link rel="icon" href="favicon/download.jpeg">  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <title>Registration Number</title>
+</head>
+<body>
+        <div class="container">
+          <h1>Western Cape Registration Numbers:</h1>
+          <input type="text" class="reg_input" placeholder="eg. CAA 920 408" />
+          <span class="isiqinisekiso">Please enter a registration number in the text-box below.</span>
+          <input class="add_btn" type="button" value="Add" />
+          <input class="reset_btn" type="button" value="Reset" />
+          <input class="clear_filter_btn" type="button" value="Clear filter" />
+          <div class="filter">
+            Filter by town:
+            <select class="town">
+              <option value="">Select a Town</option>
+              <option value="CY">BELLVILLE</option>
+              <option value="CA">CAPE TOWN</option>
+              <option value="CF">KUILSRIVER</option>
+            </select>
+          </div>
+          <ul class="reg_display_list"></ul>
+        </div>
+
+        <div class="container" id="regNumHandlebars"></div>
+
+        <script src="reg_num.js"></script>
+        <script src="reg_num_dom.js"></script>
+        <!-- Template starts here -->
+        <script type="text/x-template" id="regNumTemplate">
+          <h1>Western Cape Registration Numbers Template:</h1>
+          <span class="isiqinisekiso" id="isiqinisekisoHB">Please enter a registration number in the text-box below.</span>
+          <input type="text" class="reg_input" id="reg_inputHB" placeholder="eg.CAA 920 408"/>
+         
+          <input class="add_btn" id="add_btnHB" type="button" value="Add" />
+          <input class="reset_btn" id="reset_btnHB" type="button" value="Reset" />
+          <input class="clear_filter_btn" id="clear_filter_btnHB" type="button" value="Clear filter" />
+          <div class="filter" id="filterHB">
+              Filter by town:
+              <select class="town" id="townHB">
+                  <option value="">Select a Town</option>
+                  {{#each town}}
+                  <option value={{@key}}>{{this}}</option>
+                  {{/each}}
+              </select>
+          </div>
+          <ul class="reg_display_list" id="reg_display_listHB">
+              {{#each regNum}}
+                  <li>{{this}}</li>
+              {{/each}}
+          </ul>
+        </script>
+</body>
+</html>
